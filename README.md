@@ -14,76 +14,69 @@ No frameworks. No abstractions. Just the raw math.
 
 ## Models
 
-| Category | Model | Run |
-|----------|-------|-----|
-| **Neural Networks** | | |
-| └ Feedforward | MLP (XOR) | `python3 models/neural_networks/feedforward/mlp/micro/neural_network.py` |
-| └ Convolutional | CNN | `python3 models/neural_networks/convolutional/cnn/micro/cnn.py` |
-| └ Convolutional | Capsule Network | `python3 models/neural_networks/convolutional/capsule/micro/capsule.py` |
-| └ Recurrent | RNN | `python3 models/neural_networks/recurrent/rnn/micro/rnn.py` |
-| └ Graph | GNN | `python3 models/neural_networks/graph/gnn/micro/gnn.py` |
-| └ Generative | VAE | `python3 models/neural_networks/generative/vae/micro/vae.py` |
-| **Self-Supervised** | JEPA | `python3 models/self_supervised/jepa/micro/jepa.py` |
-| **Tree-Based** | Decision Tree | `python3 models/tree_based/decision_tree/micro/decision_tree.py` |
-| **Tree-Based** | Gradient Boosting | `python3 models/tree_based/gradient_boosting/micro/gbdt.py` |
-| **Probabilistic** | CRF | `python3 models/probabilistic/crf/micro/crf.py` |
-| **Factorization** | FM | `python3 models/factorization/fm/micro/fm.py` |
+### Neural Networks
+- **MLP** — Feedforward network that learns XOR
+- **CNN** — Convolutional layers for image patterns
+- **Capsule** — Dynamic routing between capsules
+- **RNN** — Character-level language model with BPTT
+- **GNN** — Message passing on graph structures
+- **VAE** — Variational autoencoder for generation
+
+### Self-Supervised
+- **JEPA** — Joint Embedding Predictive Architecture
+
+### Tree-Based
+- **Decision Tree** — Recursive splitting with Gini impurity
+- **Gradient Boosting** — Fit trees to residuals (XGBoost-style)
+
+### Probabilistic
+- **CRF** — Conditional Random Fields for sequences
+
+### Factorization
+- **FM** — Factorization Machines for sparse features
 
 ## Structure
 
 ```
 models/
 ├── neural_networks/
-│   ├── feedforward/
-│   │   └── mlp/
-│   │       ├── micro/              # From-scratch Python
-│   │       └── other_languages/    # COBOL, Pascal
-│   ├── convolutional/
-│   │   ├── cnn/micro/
-│   │   └── capsule/micro/
-│   ├── recurrent/
-│   │   └── rnn/micro/
-│   ├── graph/
-│   │   └── gnn/micro/
-│   └── generative/
-│       └── vae/micro/
-│
-├── self_supervised/
-│   └── jepa/micro/
-│
-├── tree_based/
-│   ├── decision_tree/micro/
-│   └── gradient_boosting/micro/
-│
-├── probabilistic/
-│   └── crf/micro/
-│
-├── factorization/
-│   └── fm/micro/
-│
-├── meta_learning/              # Coming soon: PFN, MAML
-├── reinforcement_learning/     # Coming soon: DQN, PPO
-└── techniques/                 # Coming soon: LoRA, Fine-tuning
+│   ├── feedforward/mlp/
+│   ├── convolutional/{cnn, capsule}/
+│   ├── recurrent/rnn/
+│   ├── graph/gnn/
+│   └── generative/vae/
+├── self_supervised/jepa/
+├── tree_based/{decision_tree, gradient_boosting}/
+├── probabilistic/crf/
+├── factorization/fm/
+├── meta_learning/           # Soon: PFN, MAML
+├── reinforcement_learning/  # Soon: DQN, PPO
+└── techniques/              # Soon: LoRA, Fine-tuning
 ```
 
-### Folder Convention
+Each model has a `micro/` folder for from-scratch implementations.
 
-- `micro/` — From-scratch implementations (NumPy only)
-- `torch/` — PyTorch implementations (coming later)
-- `other_languages/` — Non-Python implementations
+## Quick Start
+
+```bash
+# Run any model
+python3 models/neural_networks/feedforward/mlp/micro/neural_network.py
+python3 models/self_supervised/jepa/micro/jepa.py
+python3 models/tree_based/gradient_boosting/micro/gbdt.py
+```
 
 ## Roadmap
 
-**Models:** MLP ✓ | Decision Tree ✓ | GBDT ✓ | RNN ✓ | CNN ✓ | Capsule ✓ | GNN ✓ | VAE ✓ | JEPA ✓ | CRF ✓ | FM ✓ | LSTM | Transformer | Word2Vec | Boltzmann | RL
+**Models:** MLP ✓ | Decision Tree ✓ | GBDT ✓ | RNN ✓ | CNN ✓ | Capsule ✓ | GNN ✓ | VAE ✓ | JEPA ✓ | CRF ✓ | FM ✓ | LSTM | Transformer | Word2Vec
 
-**Categories:** Neural Networks ✓ | Tree-Based ✓ | Probabilistic ✓ | Self-Supervised ✓ | Meta-Learning | Reinforcement Learning
+**Coming:** Meta-Learning | Reinforcement Learning | Fine-tuning Techniques
 
 ## Contributing
 
 1. Pick a model + category
-2. Keep it minimal (<200 lines for micro/)
-3. No ML libraries (NumPy only)
-4. Add a README explaining the math
+2. Keep it minimal (<200 lines)
+3. NumPy only — no ML libraries
+4. Add a README with the math
 5. PR it
 
 ## License
