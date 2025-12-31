@@ -1,56 +1,90 @@
 # 🧠 VibeML
 
-**Tiny ML models in every language. Inspired by [Karpathy's micrograd](https://github.com/karpathy/micrograd).**
+**Tiny ML models from scratch. Inspired by [Karpathy's micrograd](https://github.com/karpathy/micrograd).**
 
 No frameworks. No abstractions. Just the raw math.
 
-*Vibe coded with Claude Opus 4.5 for learning & education.*
+## Goals
+
+🎯 **Vibe Coding** — Build ML models through intuition, not boilerplate. Let the code flow.
+
+📚 **Learning** — Understand what's *really* happening inside neural networks, trees, and beyond.
+
+*Vibe coded with Claude Opus 4.5*
 
 ## Models
 
-### Simple Neural Network
-A 2→4→1 network that learns XOR.
-
-- **Python** (~35 lines): `python3 neural_network.py`
-- **Pascal** (~45 lines): `fpc neural_network.pas && ./neural_network`
-- **COBOL** (~70 lines): `cobc -x -free neural_network.cob && ./a.out`
-
-### Vanilla Decision Tree
-Recursive splitting with Gini impurity.
-
-- **Python** (~60 lines): `python3 decision_tree.py`
-
-### Gradient Boosting Decision Tree
-Fit trees to residuals, sum predictions. Powers XGBoost/LightGBM.
-
-- **Python** (~75 lines): `python3 gbdt.py`
+| Category | Model | Run |
+|----------|-------|-----|
+| **Neural Networks** | | |
+| └ Feedforward | MLP (XOR) | `python3 models/neural_networks/feedforward/mlp/micro/neural_network.py` |
+| └ Convolutional | CNN | `python3 models/neural_networks/convolutional/cnn/micro/cnn.py` |
+| └ Convolutional | Capsule Network | `python3 models/neural_networks/convolutional/capsule/micro/capsule.py` |
+| └ Recurrent | RNN | `python3 models/neural_networks/recurrent/rnn/micro/rnn.py` |
+| └ Graph | GNN | `python3 models/neural_networks/graph/gnn/micro/gnn.py` |
+| └ Generative | VAE | `python3 models/neural_networks/generative/vae/micro/vae.py` |
+| **Self-Supervised** | JEPA | `python3 models/self_supervised/jepa/micro/jepa.py` |
+| **Tree-Based** | Decision Tree | `python3 models/tree_based/decision_tree/micro/decision_tree.py` |
+| **Tree-Based** | Gradient Boosting | `python3 models/tree_based/gradient_boosting/micro/gbdt.py` |
+| **Probabilistic** | CRF | `python3 models/probabilistic/crf/micro/crf.py` |
+| **Factorization** | FM | `python3 models/factorization/fm/micro/fm.py` |
 
 ## Structure
 
 ```
 models/
-├── simple_neural_network/
-│   ├── python/
-│   ├── pascal/
-│   └── cobol/
-├── vanilla_decision_tree/
-│   └── python/
-└── gradient_boosting_decision_tree/
-    └── python/
+├── neural_networks/
+│   ├── feedforward/
+│   │   └── mlp/
+│   │       ├── micro/              # From-scratch Python
+│   │       └── other_languages/    # COBOL, Pascal
+│   ├── convolutional/
+│   │   ├── cnn/micro/
+│   │   └── capsule/micro/
+│   ├── recurrent/
+│   │   └── rnn/micro/
+│   ├── graph/
+│   │   └── gnn/micro/
+│   └── generative/
+│       └── vae/micro/
+│
+├── self_supervised/
+│   └── jepa/micro/
+│
+├── tree_based/
+│   ├── decision_tree/micro/
+│   └── gradient_boosting/micro/
+│
+├── probabilistic/
+│   └── crf/micro/
+│
+├── factorization/
+│   └── fm/micro/
+│
+├── meta_learning/              # Coming soon: PFN, MAML
+├── reinforcement_learning/     # Coming soon: DQN, PPO
+└── techniques/                 # Coming soon: LoRA, Fine-tuning
 ```
+
+### Folder Convention
+
+- `micro/` — From-scratch implementations (NumPy only)
+- `torch/` — PyTorch implementations (coming later)
+- `other_languages/` — Non-Python implementations
 
 ## Roadmap
 
-**Models:** Simple NN ✓ | Vanilla Decision Tree ✓ | Gradient Boosting ✓ | Random Forest | KNN | Linear Regression | CNN | RNN | Transformer
+**Models:** MLP ✓ | Decision Tree ✓ | GBDT ✓ | RNN ✓ | CNN ✓ | Capsule ✓ | GNN ✓ | VAE ✓ | JEPA ✓ | CRF ✓ | FM ✓ | LSTM | Transformer | Word2Vec | Boltzmann | RL
 
-**Languages:** Python ✓ | Pascal ✓ | COBOL ✓ | C | Rust | Go | JavaScript | Haskell
+**Categories:** Neural Networks ✓ | Tree-Based ✓ | Probabilistic ✓ | Self-Supervised ✓ | Meta-Learning | Reinforcement Learning
 
 ## Contributing
 
-1. Pick a model + language
-2. Keep it minimal (<100 lines)
-3. No ML libraries
-4. PR it
+1. Pick a model + category
+2. Keep it minimal (<200 lines for micro/)
+3. No ML libraries (NumPy only)
+4. Add a README explaining the math
+5. PR it
 
 ## License
 
